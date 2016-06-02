@@ -1,0 +1,9 @@
+extends layout
+
+block content
+	h1 Login
+	p #{message}
+	form(action="/login", method="post")
+			input(placeholder="email" type="email" name="email")
+			input(placeholder="password" type="password" name="password")
+			input(type="submit" value="Log In")
