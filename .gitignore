@@ -49,6 +49,4 @@ Temporary Items
 # My App Stuff
 *.ps1
 /node_modules
-/models/**
-!models/Movies.js
 *.txt
