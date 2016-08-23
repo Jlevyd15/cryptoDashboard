@@ -8,6 +8,8 @@ Schema = mongoose.Schema;
 var userSchema = new Schema({
 
 	local: {
+		fname: String,
+		lname: String,
 		email: String,
 		password: String
 	}

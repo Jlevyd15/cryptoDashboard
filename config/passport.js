@@ -53,17 +53,23 @@ module.exports = function(passport) {
                     // if there are any errors, return the error
                     if (err)
                         return done(err);
-
                     // check to see if theres already a user with that email
+                    // console.log("Just b4 bad case");
+                    // if(!user){
+                    //     console.log("In bad case");
+                    //     return done(null, false, req.flash('signupMessage', 'Please Fill the fields.'));
+                    // }
                     if (user) {
+                        console.log("In good case");
                         return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
                     } else {
-
                         // if there is no user with that email
                         // create the user
                         var newUser = new User();
 
                         // set the user's local credentials
+                        newUser.local.fname = req.body.fname;
+                        newUser.local.lname = req.body.lname;
                         newUser.local.email = email;
                         newUser.local.password = newUser.generateHash(password);
 

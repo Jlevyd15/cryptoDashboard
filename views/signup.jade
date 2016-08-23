@@ -1,9 +1,32 @@
 extends layout
 
 block content
-	h1 Sign Up
-	p #{message}
-	form(action="/signup", method="post")
-			input(placeholder="email" type="email" name="email")
-			input(placeholder="password" type="password" name="password")
-			input(type="submit" value="Sign Up")
+	div.container
+		div.row
+			div.col-md-12
+				div(class="panel panel-default")
+					div.panel-heading
+						.pull-right
+							a(href="/").text-right Home
+						h1 Sign Up
+						p #{message}
+						
+					div.panel-body
+						form.form-horizontal(action="/signup", method="post")
+							div.form-group
+								label(class="col-sm-2" for="firstNameInput") First Name
+								div.col-sm-10
+									input(id="firstNameInput" placeholder="First Name" type="text" name="fname")
+							div.form-group
+								label(class="col-sm-2" for="lastNameInput") Last Name
+								div.col-sm-10
+									input(id="lastNameInput" placeholder="Last Name" type="text" name="lname")
+							div.form-group
+								label(class="col-sm-2" for="emailInput") Email
+								div.col-sm-10
+									input(id="emailInput" placeholder="Email" type="email" name="email")
+							div.form-group
+								label(class="col-sm-2" for="passInput") Password
+								div.col-sm-10
+									input(id="passInput" placeholder="Password" type="password" name="password")
+							input(class="btn btn-primary" type="submit" value="Sign Up")
