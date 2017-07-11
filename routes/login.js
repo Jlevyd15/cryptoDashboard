@@ -1,5 +1,7 @@
 app.post('/login',
-  passport.authenticate('local', { successRedirect: '/',
-                                   failureRedirect: '/login',
-                                   failureFlash: true })
+  passport.authenticate('local', 
+  	{ successRedirect: '/',
+       failureRedirect: '/login',
+       failureFlash: true 
+   })
 );

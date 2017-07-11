@@ -50,3 +50,7 @@ Temporary Items
 *.ps1
 /node_modules
 *.txt
+/docs
+*.txt
+.env
+.env.swap

@@ -9,6 +9,7 @@ var passport = require('passport')
  , LocalStrategy = require('passport-local').Strategy;
  var flash = require('connect-flash');
 var session = require('express-session');
+require('dotenv').config();
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -19,12 +20,15 @@ var app = express();
 app.set('port', (process.env.PORT || 5000));
 
 //setup connetion to db
-var localMongoUri = 'mongodb://127.0.0.1/passport-auth';
-mongoose.connect(localMongoUri);
+// var localMongoUri = 'mongodb://127.0.0.1/passport-auth';
+mongoose.connect(process.env.MONGODB_URI);
+// mongoose.connect(localMongoUri);
 var db = mongoose.connection;
 db.on('error', function() {
-  throw new Error('unable to connect to database at ' + mongoUri);
+console.log("Please start the mongo db instanse before running npm start");
+throw new Error('unable to connect to database at');
 });
+
 
 // pass passport for configuration
 require('./config/passport')(passport); 
@@ -41,7 +45,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // required for passport
-app.use(session({ secret: 'passportauth123' })); // session secret
+app.use(session({ secret: process.env.SECRET })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
