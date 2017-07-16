@@ -1,7 +1,7 @@
 {
   "name": "passport-auth",
   "version": "1.0.0",
-  "description": "sample node app using passportjs authentication",
+  "description": "dashboard to track all crypto investments",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,19 +9,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Jlevyd15/passport-auth.git"
+    "url": "git+https://github.com/Jlevyd15/cryptoDashboard.git"
   },
   "keywords": [
     "node",
     "express",
-    "passport"
+    "passport",
+    "crypto"
   ],
   "author": "Jeremy Levy",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Jlevyd15/passport-auth/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/Jlevyd15/passport-auth#readme",
+  "homepage": "",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "~1.13.2",
@@ -36,7 +37,9 @@
     "mongoose": "^4.4.19",
     "morgan": "~1.6.1",
     "passport": "^0.3.2",
+    "passport-http": "^0.3.0",
     "passport-local": "^1.0.0",
+    "request": "^2.81.0",
     "serve-favicon": "~2.3.0"
   }
 }

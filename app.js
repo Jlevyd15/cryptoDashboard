@@ -13,6 +13,7 @@ require('dotenv').config();
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+// var coinMarketCap = require('./routes/api/coinMarketCap');
 
 var app = express();
 
@@ -20,9 +21,9 @@ var app = express();
 app.set('port', (process.env.PORT || 5000));
 
 //setup connetion to db
-// var localMongoUri = 'mongodb://127.0.0.1/passport-auth';
-mongoose.connect(process.env.MONGODB_URI);
-// mongoose.connect(localMongoUri);
+var localMongoUri = 'mongodb://127.0.0.1/passport-auth';
+// mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(localMongoUri);
 var db = mongoose.connection;
 db.on('error', function() {
 console.log("Please start the mongo db instanse before running npm start");
@@ -45,6 +46,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // required for passport
+// console.log('test', process.env.SECRET)
 app.use(session({ secret: process.env.SECRET })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
@@ -54,6 +56,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 require('./routes/routes.js')(app, passport);
+require('./routes/api/index.js')(app, passport);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
